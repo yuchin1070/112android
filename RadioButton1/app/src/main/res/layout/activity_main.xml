@@ -54,19 +54,19 @@
             android:id="@+id/rdbAdult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="全票" />
+            android:text="全票$500" />
 
         <RadioButton
             android:id="@+id/rdbChild"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="兒童票" />
+            android:text="兒童票$250" />
 
         <RadioButton
             android:id="@+id/rdbStudent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="學生票" />
+            android:text="學生票$400" />
     </RadioGroup>
 
     <EditText
@@ -87,7 +87,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="20dp"
         android:onClick="button_Click"
-        android:text="確定"
+        android:text="確認"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/etQuantity" />
 
