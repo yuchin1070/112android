@@ -2,6 +2,7 @@ package com.example.radiobutton1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,41 +17,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener((new View.OnClickListener() {
+        Button buttonConfirm = findViewById(R.id.buttonConfirm);
+        buttonConfirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String outputStr = "";
+                // Get selected gender
+                RadioButton boy = findViewById(R.id.rdbBoy);
+                String gender = boy.isChecked() ? "男生" : "女生";
 
-                RadioButton boy = (RadioButton) findViewById(R.id.rdbBoy);
-                RadioButton girl = (RadioButton) findViewById(R.id.rdbGirl);
+                // Get selected ticket type and price
+                RadioButton adult = findViewById(R.id.rdbAdult);
+                RadioButton child = findViewById(R.id.rdbChild);
+                RadioButton student = findViewById(R.id.rdbStudent);
+                String ticketType;
+                int ticketPrice;
+                if (adult.isChecked()) {
+                    ticketType = "成人";
+                    ticketPrice = 500;
+                } else if (child.isChecked()) {
+                    ticketType = "孩童";
+                    ticketPrice = 250;
+                } else {
+                    ticketType = "學生";
+                    ticketPrice = 400;
+                }
 
-                if (boy.isChecked())
-                    outputStr += "男生\n";
-                else if (girl.isChecked())
-                    outputStr += "女生\n";
+                // Get quantity
+                TextView editTextQuantity = findViewById(R.id.editTextQuantity);
+                int quantity = Integer.parseInt(editTextQuantity.getText().toString());
 
-                RadioGroup type = (RadioGroup) findViewById(R.id.rgType);
-//                switch (type.getCheckedRadioButtonId()){
-//                    case R.id.rdbAdult:
-//                        outputStr += "全票\n";
-//                        break;
-//                    case R.id.rdbChild:
-//                        outputStr += "兒童票\n";
-//                        break;
-//                    case R.id.rdbStudent:
-//                        outputStr += "學生票\n";
-//                        break;
-//                }
-                if (type.getCheckedRadioButtonId()== R.id.rdbAdult)
-                    outputStr += "全票\n";
-                else if (type.getCheckedRadioButtonId()== R.id.rdbChild)
-                    outputStr += "兒童票\n";
-                else
-                    outputStr += "學生票\n";
-                TextView output = (TextView) findViewById(R.id.lblOutput);
-                output.setText(outputStr);
+                // Calculate total price
+                int totalPrice = ticketPrice * quantity;
+
+                // Create intent for next activity
+                Intent intent = new Intent(MainActivity.this, ConfirmationActivity.class);
+                intent.putExtra("gender", gender);
+                intent.putExtra("ticketType", ticketType);
+                intent.putExtra("quantity", quantity);
+                intent.putExtra("totalPrice", totalPrice);
+                startActivity(intent);
             }
-        }));
+        });
     }
 }
