@@ -39,13 +39,13 @@ public class MainActivity extends AppCompatActivity {
                 double ticketPrice = 0;
 
                 if (selectedTypeId == R.id.rdbAdult) {
-                    outputStr += "票種: 全票$500\n";
+                    outputStr += "票種: 全票\n";
                     ticketPrice = 500;
                 } else if (selectedTypeId == R.id.rdbChild) {
-                    outputStr += "票種: 兒童票$250\n";
+                    outputStr += "票種: 兒童票\n";
                     ticketPrice = 250;
                 } else {
-                    outputStr += "票種: 學生票$400\n";
+                    outputStr += "票種: 學生票\n";
                     ticketPrice = 400;
                 }
 
