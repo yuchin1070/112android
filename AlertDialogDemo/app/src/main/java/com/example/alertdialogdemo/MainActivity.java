@@ -12,12 +12,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button btn = (Button) findViewById(R.id.btnAbout);
-        btnAbout.setOnClickListenser(v ->{
+        Button btnAbout = (Button) findViewById(R.id.btnAbout);
+        btnAbout.setOnClickListener(v ->{
             new AlertDialog.Builder(this)
-                    .setTitle("關於本書");
-            .setMessage
-
-        })
+                    .setTitle("關於本書")
+                    .setMessage("Android程式設計與應用\n作者:陳會安\n教師:恰克虎")
+                    .setCancelable(true)
+                    .setPositiveButton("確定",null)
+                    .show();
+        });
     }
 }
