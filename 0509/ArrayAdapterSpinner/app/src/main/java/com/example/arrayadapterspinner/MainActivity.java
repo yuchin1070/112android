@@ -48,6 +48,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button order = (Button) findViewById(R.id.btnOrder);
+        order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String msg = drink.getSelectedItem().toString() +"," +
+                        temp.getSelectedItem().toString();
 
+                txv.setText(msg);
+            }
+        });
     }
 }
