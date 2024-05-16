@@ -3,10 +3,14 @@ package com.example.alertdialogdemo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DialogInterface.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,5 +25,29 @@ public class MainActivity extends AppCompatActivity {
                     .setPositiveButton("確定",null)
                     .show();
         });
+        Button btnEnd = (Button) findViewById(R.id.btnEnd);
+        btnEnd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setTitle("確認")
+                        .setMessage("確認結束本程式?")
+                        .setPositiveButton("確定",MainActivity.this)
+                        .setNegativeButton("取消",MainActivity.this)
+                        .show();
+            }
+        });
+    }
+
+    @Override
+    public void onClick(DialogInterface dialog, int which) {
+        switch(which){
+            case DialogInterface.BUTTON_POSITIVE:
+                finish();
+                break;
+            case DialogInterface.BUTTON_NEGATIVE:
+                Toast.makeText(this,"按下取消鈕!" ,Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
