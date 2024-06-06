@@ -22,15 +22,15 @@ public class MainActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText txtOpd1,txtOpd2;
-                txtOpd1 =(EditText) findViewById(R.id.txtOpd1);
-                txtOpd2 =(EditText) findViewById(R.id.txtOpd2);
+                EditText txtOpd1, txtOpd2;
+                txtOpd1 = (EditText) findViewById(R.id.txtOpd1);
+                txtOpd2 = (EditText) findViewById(R.id.txtOpd2);
                 Intent intent = new Intent(MainActivity.this, OpActivity.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("OPERANDO1",txtOpd1.getText().toString());
-                bundle.putString("OPERANDO2",txtOpd2.getText().toString());
+                bundle.putString("OPERAND01",txtOpd1.getText().toString());
+                bundle.putString("OPERAND02",txtOpd2.getText().toString());
                 intent.putExtras(bundle);
-                startActivityForResult(intent,1);
+                startActivityForResult(intent, 1);
             }
         });
     }
